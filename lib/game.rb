@@ -12,9 +12,6 @@ class Game
         @away_goals = data[:away_goals].to_i
         @home_goals = data[:home_goals].to_i
         @venue = data[:venue]
-        @venue_link = data[:venue_link]
-        
+        @venue_link = data[:venue_link] 
     end
-
-    
 end

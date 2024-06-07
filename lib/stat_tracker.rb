@@ -62,6 +62,7 @@ class StatTracker
   # League Statistics
   def count_of_teams
     #  implementation here
+    return @teams.count
   end
 
   def best_offense

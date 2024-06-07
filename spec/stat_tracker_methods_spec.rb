@@ -62,11 +62,24 @@ RSpec.describe StatTracker do
 # Group the games by season, sum up the goals for each season, and divide by the number of games in that season.
 
 
-# Team Statistics
+# League Statistics
 
-# count_of_teams
-# Count the total number of unique teams.
-# Count the distinct team ids in the teams data.
+describe '#count_of_teams' do
+  it 'can count the total number of unique teams' do
+    expect(@stat_tracker.count_of_teams).to eq(5)
+  end
+
+  it 'can count the distinct team ids in the teams data' do
+  end
+end
+
+describe '#best_offense' do
+  it 'can find the team with the highest average number of goals scored per game.' do
+  end
+
+  it 'can calculate the average goals per game for each team and find the team with the highest average' do
+  end
+end
 
 # best_offense
 # Find the team with the highest average number of goals scored per game.
