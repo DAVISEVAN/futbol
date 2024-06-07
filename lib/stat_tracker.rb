@@ -68,7 +68,9 @@ class StatTracker
   def best_offense
     #  implementation here
 
-    binding.pry
+    @games.each do |game|
+      binding.pry
+    end
   end
 
   def worst_offense
