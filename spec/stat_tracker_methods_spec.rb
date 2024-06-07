@@ -75,6 +75,7 @@ end
 
 describe '#best_offense' do
   it 'can find the team with the highest average number of goals scored per game.' do
+    # expect(@stat_tracker.best_offense).to eq()
   end
 
   it 'can calculate the average goals per game for each team and find the team with the highest average' do

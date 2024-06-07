@@ -67,6 +67,8 @@ class StatTracker
 
   def best_offense
     #  implementation here
+
+    binding.pry
   end
 
   def worst_offense
