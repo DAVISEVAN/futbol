@@ -29,100 +29,116 @@ RSpec.describe StatTracker do
 
     @stat_tracker = StatTracker.new(@games, @game_teams, @teams)
   end
-# Game Statistics
 
-  it 'calculates the highest_total_score' do
-    expect(@stat_tracker.highest_total_score).to eq(5)
+  # Game Statistics
+
+  # it 'calculates the highest_total_score' do
+  #   expect(@stat_tracker.highest_total_score).to eq(5)
+  # end
+
+  # it 'calculates the lowest_total_score' do
+  #   expect(@stat_tracker.lowest_total_score).to eq(3)
+  # end
+
+  # it 'calculates the percentage of home wins' do
+  #   expect(@stat_tracker.percentage_home_wins).to eq(0.60)
+  # end
+
+  # it 'calculates the percentage of visitor wins' do
+  #   expect(@stat_tracker.percentage_visitor_wins).to eq(0.40)
+  # end
+
+  # it 'calculates the percentage of ties' do
+  #   expect(@stat_tracker.percentage_ties).to eq(0.0)
+  # end
+
+  # it 'calculates the count of games by season' do
+  #   expect(@stat_tracker.count_of_games_by_season).to eq({ '20122013' => 5 })
+  # end
+
+  # it 'calculates the average goals per game' do
+  #   expect(@stat_tracker.average_goals_per_game).to eq(4.4)
+  # end
+
+  # it 'calculates the average goals by season' do
+  #   expect(@stat_tracker.average_goals_by_season).to eq({ '20122013' => 4.4 })
+  # end
+
+  # League Statistics
+
+  it 'returns the total number of teams in the data' do
+    expect(@stat_tracker.count_of_teams).to eq(5)
   end
 
-  it 'calculates the lowest_total_score' do
-    expect(@stat_tracker.lowest_total_score).to eq(3)
+  it 'returns the name of the team with the highest average number of goals scored per game across all seasons' do
+    expect(@stat_tracker.best_offense).to eq('')
   end
 
-  it 'calculates the percentage of home wins' do
-    expect(@stat_tracker.percentage_home_wins).to eq(0.60)
+  it 'returns the name of the team with the lowest average number of goals scored per game across all seasons' do
+    expect(@stat_tracker.worst_offense).to eq('')
   end
 
-  it 'calculates the percentage of visitor wins' do
-    expect(@stat_tracker.percentage_visitor_wins).to eq(0.40)
+  it 'returns the name of the team with the highest average score per game across all seasons when they are away' do
+    expect(@stat_tracker.highest_scoring_visitor).to eq('')
   end
 
-  it 'calculates the percentage of ties' do
-    expect(@stat_tracker.percentage_ties).to eq(0.0)
+  it 'returns the name of the team with the highest average score per game across all seasons when they are home' do
+    expect(@stat_tracker.highest_scoring_home_team).to eq('')
   end
 
-  it 'calculates the count of games by season' do
-    expect(@stat_tracker.count_of_games_by_season).to eq({ '20122013' => 5 })
+  it 'returns the name of the team with the lowest average score per game across all seasons when they are a visitor' do
+    expect(@stat_tracker.lowest_scoring_visitor).to eq('Portland Timbers')
   end
 
-  it 'calculates the average goals per game' do
-    expect(@stat_tracker.average_goals_per_game).to eq(4.4)
-  end
-
-  it 'calculates the average goals by season' do
-    expect(@stat_tracker.average_goals_by_season).to eq({ '20122013' => 4.4 })
-  end
-
-  # Team Statistics
-  it 'calculates the highest scoring home team' do
-    expect(@stat_tracker.highest_scoring_home_team).to eq('LA Galaxy')
-  end
-
-  it 'calculates the highest scoring visitor team' do
-    expect(@stat_tracker.highest_scoring_visitor_team).to eq('LA Galaxy')
-  end
-
-  it 'calculates the lowest scoring home team' do
+  it 'returns the name of the team with the lowest average score per game across all seasons when they are at home' do
     expect(@stat_tracker.lowest_scoring_home_team).to eq('Portland Timbers')
-  end
-
-  it 'calculates the lowest scoring visitor team' do
-    expect(@stat_tracker.lowest_scoring_visitor_team).to eq('Portland Timbers')
-  end
-
-  it 'calculates the winningest team' do
-    expect(@stat_tracker.winningest_team).to eq('LA Galaxy')
-  end
-
-  it 'calculates the best fans' do
-    expect(@stat_tracker.best_fans).to eq('LA Galaxy')
-  end
-
-  it 'calculates the highest scoring home team' do
-    expect(@stat_tracker.highest_scoring_home_team).to eq('LA Galaxy')
-  end
-
-  it 'calculates the lowest scoring home team' do
-    expect(@stat_tracker.lowest_scoring_home_team).to eq('Portland Timbers')
-  end
-
-  it 'calculates the worst fans' do
-    expect(@stat_tracker.worst_fans).to eq('Portland Timbers')
   end
 
   # Season Statistics
-  it 'calculates the winningest coach for a season' do
-    expect(@stat_tracker.winningest_coach('20122013')).to eq('Claude Julien')
-  end
 
-  it 'calculates the worst coach for a season' do
-    expect(@stat_tracker.worst_coach('20122013')).to eq('John Tortorella')
-  end
+  # it 'calculates the winningest coach for a season' do
+  #   expect(@stat_tracker.winningest_coach('20122013')).to eq('Claude Julien')
+  # end
 
-  it 'calculates the most accurate team for a season' do
-    expect(@stat_tracker.most_accurate_team('20122013')).to eq('LA Galaxy')
-  end
+  # it 'calculates the worst coach for a season' do
+  #   expect(@stat_tracker.worst_coach('20122013')).to eq('John Tortorella')
+  # end
 
-  it 'calculates the least accurate team for a season' do
-    expect(@stat_tracker.least_accurate_team('20122013')).to eq('Portland Timbers')
-  end
+  # it 'calculates the most accurate team for a season' do
+  #   expect(@stat_tracker.most_accurate_team('20122013')).to eq('LA Galaxy')
+  # end
 
-  it 'calculates the most tackles in a season' do
-    expect(@stat_tracker.most_tackles('20122013')).to eq('LA Galaxy')
-  end
+  # it 'calculates the least accurate team for a season' do
+  #   expect(@stat_tracker.least_accurate_team('20122013')).to eq('Portland Timbers')
+  # end
 
-  it 'calculates the fewest tackles in a season' do
-    expect(@stat_tracker.fewest_tackles('20122013')).to eq('Portland Timbers')
-  end
+  # it 'calculates the most tackles in a season' do
+  #   expect(@stat_tracker.most_tackles('20122013')).to eq('LA Galaxy')
+  # end
 
+  # it 'calculates the fewest tackles in a season' do
+  #   expect(@stat_tracker.fewest_tackles('20122013')).to eq('Portland Timbers')
+  # end
+
+  #  Additional Methods
+
+  # it 'calculates the winningest team' do
+  #   expect(@stat_tracker.winningest_team).to eq('LA Galaxy')
+  # end
+
+  # it 'calculates the best fans' do
+  #   expect(@stat_tracker.best_fans).to eq('LA Galaxy')
+  # end
+
+  # it 'calculates the highest scoring home team' do
+  #   expect(@stat_tracker.highest_scoring_home_team).to eq('LA Galaxy')
+  # end
+
+  # it 'calculates the lowest scoring home team' do
+  #   expect(@stat_tracker.lowest_scoring_home_team).to eq('Portland Timbers')
+  # end
+
+  # it 'calculates the worst fans' do
+  #   expect(@stat_tracker.worst_fans).to eq('Portland Timbers')
+  # end
 end

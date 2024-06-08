@@ -10,17 +10,18 @@ class StatTracker
       games = parse_csv(locations[:games], Game)
       teams = parse_csv(locations[:teams], Team)
       game_teams = parse_csv(locations[:game_teams], GameTeam)
-  
+
       new(games, teams, game_teams)
     end
 
     def self.parse_csv(filepath, class_object)
       CSV.read(filepath, headers: true, header_converters: :symbol).map do |data|
-        class_object.new(data)
+        instance = class_object.new(data)
+        return instance
       end
     end
 
-    def initialize(games, teams, game_teams)
+    def initialize(games, teams, game_teams)      
         @games = games
         @teams = teams
         @game_teams = game_teams
@@ -76,6 +77,7 @@ class StatTracker
     # Count the total number of unique teams.
     # Count the distinct team ids in the teams data.
 
+    return @teams.length()
   end
 
   def best_offense
@@ -83,6 +85,31 @@ class StatTracker
   # Find the team with the highest average number of goals scored per game.
   # Calculate the average goals per game for each team and find the team with the highest average.
   
+    # Initialize a Hash to store total goals and game count for each team
+    team_stats = Hash.new { |hash, key| hash[key] = { total_goals: 0, games_played: 0 } }
+
+    # binding.pry
+
+    # Iterate through each GameTeam instance gather statistics
+    @game_teams.each do |game_team|
+
+      # binding.pry
+
+      team_stats[game_team[:team_id].to_i][:total_goals] += game_team[:goals]
+      team_stats[game_team[:team_id].to_i][:games_played] += 1
+    end
+
+    # Calculate the average goals per game for each team
+    team_averages = team_stats.transform_values do |stats|
+      stats[:total_goals].to_f / stats[:games_played]
+    end
+
+    # Find the team with the highest average goals per game
+    best_team_id = team_averages.max_by { |_, avg_goals| avg_goals }.first
+
+    # Find the team using the team_id
+    best_team = @teams.find { |team| team.team_id best_team_id }
+    best_team.teamName
   end
 
   def worst_offense

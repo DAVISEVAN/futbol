@@ -1,6 +1,5 @@
 class GameTeam
     attr_reader :game_id, :team_id, :HoA, :result, :settled_in, :head_coach, :goals, :shots, :tackles, :pim, :powerPlayOpportunities, :powerPlayGoals, :faceOffWinPercentage, :giveaways, :takeaways
-    
 
     def initialize(data)
         @game_id = data[:game_id]
@@ -18,6 +17,5 @@ class GameTeam
         @faceOffWinPercentage = data[:faceOffWinPercentage].to_f
         @giveaways = data[:giveaways].to_i
         @takeaways = data[:takeaways].to_i
-        
     end
 end
