@@ -110,8 +110,12 @@ RSpec.describe StatTracker do
   end
 
   it "#most_accurate_team" do
-    expect(@stat_tracker.most_accurate_team("20122013")). to eq "Reign FC"
+    expect(@stat_tracker.most_accurate_team("20122013")). to eq "3"
   end
+
+  it "#most_accurate_team" do
+  expect(@stat_tracker.most_accurate_team("20122013")).to eq "Reign FC"
+end
 
   it "#least_accurate_team" do
     expect(@stat_tracker.least_accurate_team("20122013")). to eq "FC Cincinnati"

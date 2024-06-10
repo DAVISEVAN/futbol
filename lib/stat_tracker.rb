@@ -3,35 +3,6 @@ require_relative 'game'
 require_relative 'team'
 require_relative 'game_team'
 
-
-
-# Method	Description	Return Value
-# count_of_teams	Total number of teams in the data.	Integer
-
-##
-# best_offense	Name of the team with the highest average number of goals scored per game across all seasons.	String
-#
-# Best away team#
-## team -> total number of goals across all seasons
-# team -> average_num_of_goals
-
-
-# 3 games
-
-# 3 teams
-
-# Team1 -> avg goal
-# Team2 -> avg goal
-
-
-
-# worst_offense	Name of the team with the lowest average number of goals scored per game across all seasons.	String
-# highest_scoring_visitor	Name of the team with the highest average score per game across all seasons when they are away.	String
-# highest_scoring_home_team	Name of the team with the highest average score per game across all seasons when they are home.	String
-# lowest_scoring_visitor	Name of the team with the lowest average score per game across all seasons when they are a visitor.	String
-# lowest_scoring_home_team	Name of the team with the lowest average score per game across all seasons when they are at home.	String
-
-
 class StatTracker
     attr_reader :games, :teams, :game_teams
 
@@ -85,18 +56,10 @@ class StatTracker
     total_num_of_games_by_team[home_team_id] += 1;
     total_num_of_games_by_team[away_team_id] += 1;
 
-
-
-
-
     end
-
    team_ids = goals_by_team.keys;
-
-
    highest_average = 0
    team_with_highest_average = nil
-
 
    team_ids.each do |team_id|
     num_of_games = total_num_of_games_by_team[team_id]
@@ -132,19 +95,10 @@ class StatTracker
 
     total_num_of_games_by_team[home_team_id] += 1;
     total_num_of_games_by_team[away_team_id] += 1;
-
-
-
-
-
     end
-
    team_ids = goals_by_team.keys;
-
-
    lowest_average = 99999999
    team_with_lowest_average = nil
-
 
    team_ids.each do |team_id|
     num_of_games = total_num_of_games_by_team[team_id]
@@ -161,8 +115,6 @@ class StatTracker
   
   end
 
-
-
 def highest_scoring_visitor
 
   away_goals_by_team = {}
@@ -178,8 +130,6 @@ def highest_scoring_visitor
     total_num_of_away_games_by_team[away_team_id] += 1;
 
   end
-
-
   team_ids = away_goals_by_team.keys
 
   highest_score = 0;
@@ -213,11 +163,9 @@ def lowest_scoring_visitor
     total_num_of_away_games_by_team[away_team_id] += 1;
 
   end
-
-
   team_ids = away_goals_by_team.keys
 
-  lowest_score = 9999; # Change this to a hight number (infiginity)
+  lowest_score = 9999; # Change this to a hight number (infinity)
   lowest_visitor = nil;
 
   team_ids.each do |team_id|
@@ -249,11 +197,9 @@ def lowest_scoring_home_team
     total_num_of_home_games_by_team[home_team_id] += 1;
 
   end
-
-
   team_ids = home_goals_by_team.keys
 
-  lowest_score = 9999; # Change this to a hight number (infiginity)
+  lowest_score = 9999; # Change this to a hight number (infinity)
   lowest_home = nil;
 
   team_ids.each do |team_id|
@@ -268,8 +214,6 @@ def lowest_scoring_home_team
   lowest_home
 
 end
-
-
 
 def highest_scoring_home_team
 
@@ -287,10 +231,9 @@ def highest_scoring_home_team
 
   end
 
-
   team_ids = home_goals_by_team.keys
 
-  highest_score = 0; # Change this to a hight number (infiginity)
+  highest_score = 0; # Change this to a hight number (infiinity)
   highest_home = nil;
 
   team_ids.each do |team_id|
@@ -304,11 +247,6 @@ def highest_scoring_home_team
 
   highest_home
 end
-
-
-
-
-
 
   def lowest_total_score
     @games.map { |game| game.away_goals + game.home_goals }.min
@@ -349,85 +287,80 @@ end
     end
   end
 
-  # # League Statistics
-  # def count_of_teams
-  #   # count_of_teams
-  #   # Count the total number of unique teams.
-  #   # Count the distinct team ids in the teams data.
 
-  # end
-
-  # def best_offense
-  # # best_offense
-  # # Find the team with the highest average number of goals scored per game.
-  # # Calculate the average goals per game for each team and find the team with the highest average.
-  
-  # end
-
-  # def worst_offense
-  #   # worst_offense
-  #   # Find the team with the lowest average number of goals scored per game.
-  #   # Calculate the average goals per game for each team and find the team with the lowest average.
-  # end
-
-  # def highest_scoring_visitor
-  #   # highest_scoring_visitor
-  #   # Find the team with the highest average score per game when they are away.
-  #   # Filter the games where the team is away, calculate their average score per game, and find the team with the highest average.
-  # end
-
-  # def highest_scoring_home_team
-  #   # highest_scoring_home_team
-  #   # Find the team with the highest average score per game when they are home.
-  #   # Filter the games where the team is home, calculate their average score per game, and find the team with the highest average.  #  implementation here
-  # end
-
-  # def lowest_scoring_visitor
-  #   # lowest_scoring_visitor
-  #   # Find the team with the lowest average score per game when they are a visitor.
-  #   # Filter the games where the team is away, calculate their average score per game, and find the team with the lowest average.
-  # end
-
-  # def lowest_scoring_home_team
-  #   # lowest_scoring_home_team
-  #   # Find the team with the lowest average score per game when they are at home.
-  #   # Filter the games where the team is home, calculate their average score per game, and find the team with the lowest average.
-  # end
-
-  # # Season Statistics
-  # def winningest_coach
-  #   # winningest_coach
-  #   # Find the coach with the best win percentage for the season.
-  #   # Group the games by season and head coach, calculate the win percentage for each coach, and find the one with the highest percentage.
-  # end
-
-  # def worst_coach
-  #   # worst_coach
-  #   # Find the coach with the worst win percentage for the season.
-  #   # Group the games by season and head coach, calculate the win percentage for each coach, and find the one with the lowest percentage.
-  # end
-
-  # def most_accurate_team
-  #   # most_accurate_team
-  #   # Find the team with the best ratio of shots to goals for the season.
-  #   # Group the games by season and team, calculate the ratio of shots to goals for each team, and find the team with the highest ratio.
-  # end
-
-  # def least_accurate_team
-  #   # least_accurate_team
-  #   # Find the team with the worst ratio of shots to goals for the season.
-  #   # Group the games by season and team, calculate the ratio of shots to goals for each team, and find the team with the lowest ratio.
-  # end
-
-  # def most_tackles
-  #   # most_tackles
-  #   # Find the team with the most tackles in the season.
-  #   # Group the games by season and team, sum up the tackles for each team, and find the team with the highest total tackles.
-  # end
-
-  # def fewest_tackles
-  #   # fewest_tackles
-  #   # Find the team with the fewest tackles in the season.
-  #   # Group the games by season and team, sum up the tackles for each team, and find the team with the lowest total tackles.
-  # end
+  # Season Statistics
+  def winningest_coach(season)
+    season_games = @game_teams.select { |gt| @games.any? { |game| game.game_id == gt.game_id && game.season == season } }
+    coach_wins = season_games.group_by(&:head_coach).transform_values do |games|
+      total_games = games.size
+      wins = games.count { |game| game.result == "WIN" }
+      (wins.to_f / total_games).round(2)
+    end
+    coach_wins.max_by { |_, win_percentage| win_percentage }&.first
+  end
+  def worst_coach(season)
+    season_games = @game_teams.select { |gt| @games.any? { |game| game.game_id == gt.game_id && game.season == season } }
+    coach_wins = season_games.group_by(&:head_coach).transform_values do |games|
+      total_games = games.size
+      wins = games.count { |game| game.result == "WIN" }
+      (wins.to_f / total_games).round(2)
+    end
+    coach_wins.min_by { |_, win_percentage| win_percentage }&.first
+  end
+  def most_accurate_team(season)
+    team_shots_to_goals = Hash.new { |hash, key| hash[key] = { shots: 0, goals: 0 } }
+    @game_teams.each do |game_team|
+      game = @games.find { |g| g.game_id == game_team.game_id }
+      if game && game.season == season
+        team_shots_to_goals[game_team.team_id][:shots] += game_team.shots
+        team_shots_to_goals[game_team.team_id][:goals] += game_team.goals
+      end
+    end
+    team_shots_to_goals.each do |team_id, stats|
+      accuracy = stats[:goals].to_f / stats[:shots]
+      puts "Team ID: #{team_id}, Accuracy: #{accuracy}, Shots: #{stats[:shots]}, Goals: #{stats[:goals]}"
+    end
+    best_team_id = team_shots_to_goals.max_by { |team_id, stats| stats[:goals].to_f / stats[:shots] }.first
+    team_name = @teams.find { |team| team.team_id == best_team_id }.teamName
+    puts "Most Accurate Team ID: #{best_team_id}, Name: #{team_name}"
+    team_name
+  end
+  def least_accurate_team(season)
+    team_shots_to_goals = Hash.new { |hash, key| hash[key] = { shots: 0, goals: 0 } }
+    @game_teams.each do |game_team|
+      game = @games.find { |g| g.game_id == game_team.game_id }
+      if game && game.season == season
+        team_shots_to_goals[game_team.team_id][:shots] += game_team.shots
+        team_shots_to_goals[game_team.team_id][:goals] += game_team.goals
+      end
+    end
+    team_shots_to_goals.each do |team_id, stats|
+      accuracy = stats[:goals].to_f / stats[:shots]
+      puts "Team ID: #{team_id}, Accuracy: #{accuracy}, Shots: #{stats[:shots]}, Goals: #{stats[:goals]}"
+    end
+    worst_team_id = team_shots_to_goals.min_by { |team_id, stats| stats[:goals].to_f / stats[:shots] }.first
+    team_name = @teams.find { |team| team.team_id == worst_team_id }.teamName
+    puts "Least Accurate Team ID: #{worst_team_id}, Name: #{team_name}"
+    team_name
+  end
+  def most_tackles(season)
+  season_games = @game_teams.select { |gt| @games.any? { |game| game.game_id == gt.game_id && game.season == season } }
+  team_tackles = season_games.group_by(&:team_id).transform_values do |games|
+    total_tackles = games.sum(&:tackles)
+  end
+  best_team_id = team_tackles.max_by { |_, tackles| tackles }&.first
+  team_name = @teams.find { |team| team.team_id == best_team_id }&.teamName
+  puts "Most Tackles Team ID: #{best_team_id}, Name: #{team_name}"
+  team_name
+  end
+  def fewest_tackles(season)
+    season_games = @game_teams.select { |gt| @games.any? { |game| game.game_id == gt.game_id && game.season == season } }
+    team_tackles = season_games.group_by(&:team_id).transform_values do |games|
+      total_tackles = games.sum(&:tackles)
+    end
+    worst_team_id = team_tackles.min_by { |_, tackles| tackles }&.first
+    team_name = @teams.find { |team| team.team_id == worst_team_id }&.teamName
+    puts "Fewest Tackles Team ID: #{worst_team_id}, Name: #{team_name}"
+    team_name
+  end
 end
