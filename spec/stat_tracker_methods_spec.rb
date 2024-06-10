@@ -64,11 +64,33 @@ RSpec.describe StatTracker do
     expect(@stat_tracker.count_of_teams).to eq 2
   end
 
+
   it "#best_offense" do
     # expect(@stat_tracker.best_offense).to eq "Reign FC"
     expect(@stat_tracker.best_offense).to eq "6"
 
   end
+
+# League Statistics
+
+describe '#count_of_teams' do
+  it 'can count the total number of unique teams' do
+    expect(@stat_tracker.count_of_teams).to eq(5)
+  end
+
+  it 'can count the distinct team ids in the teams data' do
+  end
+end
+
+describe '#best_offense' do
+  it 'can find the team with the highest average number of goals scored per game.' do
+    expect(@stat_tracker.best_offense).to eq('Test')
+  end
+
+  it 'can calculate the average goals per game for each team and find the team with the highest average' do
+  end
+end
+
 
   it "#worst_offense" do
     # expect(@stat_tracker.worst_offense).to eq "FC Cincinnati"

@@ -196,6 +196,12 @@ def lowest_scoring_home_team
     total_num_of_home_games_by_team[home_team_id] ||= 0;
     total_num_of_home_games_by_team[home_team_id] += 1;
 
+
+  # League Statistics
+  def count_of_teams
+    #  implementation here
+    return @teams.count
+
   end
   team_ids = home_goals_by_team.keys
 
@@ -207,6 +213,14 @@ def lowest_scoring_home_team
     if goals < lowest_score
       lowest_score = goals
       lowest_home = team_id
+    end
+
+
+  def best_offense
+    #  implementation here
+
+    @games.each do |game|
+      binding.pry
     end
 
   end
